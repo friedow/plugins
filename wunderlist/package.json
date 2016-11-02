@@ -1,0 +1,23 @@
+{
+  "name": "meetfranz-wunderlist-plugin",
+  "version": "1.0.0",
+  "description": "Wunderlist plugin for meetfranz.",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://www.wunderlist.com/#/lists/inbox",
+    "serviceName": "Wunderlist",
+    "message": "Wunderlist plugin for meetfranz.",
+    "popup": [],
+    "hasNotificationSound": false,
+    "hasIndirectMessages": false,
+    "hasTeamID": false,
+    "customURL": false,
+    "hostedOnly": false,
+    "webviewOptions": {
+      "disablewebsecurity": ""
+    },
+    "openDevTools": false
+  }
+}
