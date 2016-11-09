@@ -1,0 +1,23 @@
+{
+  "name": "plugin-creator",
+  "version": "1.0.0",
+  "description": "Creates Franz plugins for you.",
+  "main": "index.js",
+  "author": "Christian Friedow <christian@friedow.com>",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://google.com",
+    "serviceName": "Plugin Creator",
+    "message": "",
+    "popup": [],
+    "hasNotificationSound": false,
+    "hasIndirectMessages": false,
+    "hasTeamID": false,
+    "customURL": false,
+    "hostedOnly": false,
+    "webviewOptions": {
+      "disablewebsecurity": ""
+    },
+    "openDevTools": true
+  }
+}
