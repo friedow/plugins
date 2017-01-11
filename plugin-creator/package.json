@@ -6,7 +6,7 @@
   "author": "Christian Friedow <christian@friedow.com>",
   "license": "MIT",
   "config": {
-    "serviceURL": "https://google.com",
+    "serviceURL": ".\\Franz\\Plugins\\index.html",
     "serviceName": "Plugin Creator",
     "message": "",
     "popup": [],

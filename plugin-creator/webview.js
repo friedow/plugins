@@ -1,46 +1,5 @@
 const path = require('path');
-var fs = require('fs');
-
-function copyFileSync( source, target ) {
-
-    var targetFile = target;
-
-    //if target is a directory a new file with the same name will be created
-    if ( fs.existsSync( target ) ) {
-        if ( fs.lstatSync( target ).isDirectory() ) {
-            targetFile = path.join( target, path.basename( source ) );
-        }
-    }
-
-    fs.writeFileSync(targetFile, fs.readFileSync(source));
-}
-
-function copyFolderRecursiveSync( source, target ) {
-    var files = [];
-
-    //check if folder needs to be created or integrated
-    //var targetFolder = path.join( target, path.basename( source ) );
-    var targetFolder = path.join( target );
-    if ( !fs.existsSync( targetFolder ) ) {
-        fs.mkdirSync( targetFolder );
-    }
-
-    //copy
-    if ( fs.lstatSync( source ).isDirectory() ) {
-        files = fs.readdirSync( source );
-        files.forEach( function ( file ) {
-            var curSource = path.join( source, file );
-            if ( fs.lstatSync( curSource ).isDirectory() ) {
-                copyFolderRecursiveSync( curSource, targetFolder );
-            } else {
-                copyFileSync( curSource, targetFolder );
-            }
-        } );
-    }
-}
-
-copyFolderRecursiveSync( process.env.APPDATA + '\\Franz\\Plugins\\custom-plugin-creator', process.env.APPDATA + '\\Franz\\Plugins\\first-custom-plugin' );
-
+const pluginCreator = require(process.env.APPDATA + '\\Franz\\Plugins\\plugin-creator\\js\\plugin-creator.js');
 
 module.exports = (Franz, options) => {
   let updates = 0;
@@ -91,8 +50,9 @@ module.exports = (Franz, options) => {
   modal.querySelector('.close').addEventListener('click', hideModal);
   document.body.appendChild(modal);
 
-  const form = document.createElement('form');
-  form.innerHTML = 'Name:<br><input type="text" name="plugin-name"><br>URL:<br><input type="text" name="plugin-url"><br><input type="submit" name="submit">';
+
+  const form = document.createElement('div');
+  form.innerHTML = 'Name:<br><input type="text" id="plugin-name"><br>URL:<br><input type="text" id="plugin-url"><br><button onclick="pluginCreator.createCustomPlugin()">Create</button>';
   document.body.appendChild(form);
 
   document.addEventListener('keydown', function(e) { if (e.keyCode === 27) { hideModal(); } });
